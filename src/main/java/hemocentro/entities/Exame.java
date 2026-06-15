@@ -20,7 +20,4 @@ public class Exame {
     @Column(nullable = false)
     private String descricao;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "coleta_id")
-    private Coleta coleta;
 }

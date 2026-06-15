@@ -34,7 +34,12 @@ public class Coleta {
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoaDoadora;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "coleta")
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "tb_coleta_exame",
+            joinColumns = @JoinColumn(name = "coleta_id"),
+            inverseJoinColumns = @JoinColumn(name = "exame_id")
+    )
     private List<Exame> exames;
 
 }
