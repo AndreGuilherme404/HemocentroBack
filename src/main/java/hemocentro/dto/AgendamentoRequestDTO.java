@@ -2,6 +2,7 @@ package hemocentro.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import hemocentro.entities.Pessoa;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,6 @@ public class AgendamentoRequestDTO {
     @JsonFormat(pattern = "dd-MM-yyyy")
     @NotNull(message = "A data é obrigatória.")
     private LocalDate data;
-    @NotNull(message = "O horário é obrigatório.")
+    @NotBlank(message = "O horário é obrigatório.")
     private String horario;
 }

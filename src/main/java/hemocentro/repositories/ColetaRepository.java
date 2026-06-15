@@ -1,4 +1,7 @@
 package hemocentro.repositories;
 
-public class ColetaRepository {
+import hemocentro.entities.Coleta;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ColetaRepository extends JpaRepository<Coleta, Long> {
 }

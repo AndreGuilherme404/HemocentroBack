@@ -1,5 +1,6 @@
 package hemocentro.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import hemocentro.entities.Hemocentro;
 import hemocentro.entities.Pessoa;
 import lombok.AllArgsConstructor;
@@ -16,10 +17,12 @@ import java.util.List;
 @Setter
 public class ColetaResponseDTO {
     private Long id;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate dataColeta;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate dataValidade;
     private Long hemocentroId;
-    private Long pessoaDoadora;
+    private Long pessoaId;
     private List<ExameResponseDTO> exames;
     //pensando no front-end, quando for pedir pra ver uma coleta eu tambem mostro os dados
     //dos exames feitos e os dados sobre eles

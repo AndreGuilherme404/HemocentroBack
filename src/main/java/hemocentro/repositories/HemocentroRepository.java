@@ -1,4 +1,7 @@
 package hemocentro.repositories;
 
-public class HemocentroRepository {
+import hemocentro.entities.Hemocentro;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface HemocentroRepository extends JpaRepository<Hemocentro, Long> {
 }

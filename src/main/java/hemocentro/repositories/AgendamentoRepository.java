@@ -1,4 +1,7 @@
 package hemocentro.repositories;
 
-public class AgendamentoRepository {
+import hemocentro.entities.Agendamento;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> {
 }

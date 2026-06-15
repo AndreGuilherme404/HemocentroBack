@@ -1,5 +1,6 @@
 package hemocentro.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ExameRequestDTO {
-    @NotNull(message = "A descricao do exame é obrigatório.")
+    @NotBlank(message = "A descricao do exame é obrigatório.")
     private String descricao;
     @NotNull(message = "O id da coleta é obrigatório.")
     private Long coletaId;

@@ -1,5 +1,6 @@
 package hemocentro.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import hemocentro.entities.Pessoa;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +16,7 @@ import java.time.LocalDate;
 public class AgendamentoResponseDTO {
     private Long id;
     private Long pessoaId;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate data;
     private String horario;
 }
