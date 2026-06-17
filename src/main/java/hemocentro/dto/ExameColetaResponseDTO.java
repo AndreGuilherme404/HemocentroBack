@@ -1,5 +1,6 @@
 package hemocentro.dto;
 
+import hemocentro.Situacao;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,8 +10,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ExameResponseDTO {
+public class ExameColetaResponseDTO {
     private Long id;
     private String nome;
-    private String descricao;
+    private Situacao situacao;
 }

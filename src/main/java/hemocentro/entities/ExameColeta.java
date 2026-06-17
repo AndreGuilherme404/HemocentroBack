@@ -6,27 +6,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "tb_agendamento")
-public class Agendamento {
+@Table(name = "tb_exame_coleta")
+public class ExameColeta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pessoa_id")
-    private Pessoa pessoa;
+    @OneToOne
+    private Exame exame;
 
     @Column(nullable = false)
-    private LocalDate data;
-
-    @Column(nullable = false)
-    private String horario;
-
+    private Boolean resultado;
 }

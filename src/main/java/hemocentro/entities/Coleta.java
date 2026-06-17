@@ -38,8 +38,8 @@ public class Coleta {
     @JoinTable(
             name = "tb_coleta_exame",
             joinColumns = @JoinColumn(name = "coleta_id"),
-            inverseJoinColumns = @JoinColumn(name = "exame_id")
+            inverseJoinColumns = @JoinColumn(name = "exame_coleta_id")
     )
-    private List<Exame> exames;
+    private List<ExameColeta> examesColeta;
 
 }

@@ -12,6 +12,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ExameRequestDTO {
+    @NotBlank(message = "O nome do exame é obrigatório.")
+    private String nome;
+
     @NotBlank(message = "A descricao do exame é obrigatório.")
     private String descricao;
     @NotNull(message = "O id da coleta é obrigatório.")
