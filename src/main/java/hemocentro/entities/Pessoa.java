@@ -28,9 +28,6 @@ public class Pessoa {
     @Column
     private String email;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoa") //nome exato do atributo na outra classe
-    private List<Agendamento> agendamentos;
-
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoaDoadora")
     private List<Coleta> coletas;
 }
