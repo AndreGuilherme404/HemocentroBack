@@ -1,6 +1,7 @@
 package hemocentro.entities;
 
 import hemocentro.TipoPerfil;
+import hemocentro.dto.UsuarioRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,12 +30,13 @@ public class Pessoa {
     @Column
     private String email;
 
-    @Column(nullable = false)
-    private String senha;
-
-    @Column(nullable = false)
-    private TipoPerfil tipoPerfil;
-
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoaDoadora")
     private List<Coleta> coletas;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoa")
+    private List<Usuario> contas;
+
+    public void addUser(Usuario usuario){
+        contas.add(usuario);
+    }
 }

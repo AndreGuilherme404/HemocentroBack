@@ -2,6 +2,7 @@ package hemocentro.dto;
 
 import hemocentro.TipoPerfil;
 import hemocentro.entities.Pessoa;
+import hemocentro.entities.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,9 +16,9 @@ public class UsuarioResponseDTO {
     Long id;
     String nome;
     TipoPerfil tipoPerfil;
-    public UsuarioResponseDTO(Pessoa entity){
+    public UsuarioResponseDTO(Usuario entity){
         this.id = entity.getId();
-        this.nome = entity.getNome();
+        this.nome = entity.getLogin();
         this.tipoPerfil = entity.getTipoPerfil();
     }
 

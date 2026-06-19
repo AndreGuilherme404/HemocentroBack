@@ -3,10 +3,12 @@ package hemocentro.services;
 
 import hemocentro.dto.PessoaRequestDTO;
 import hemocentro.dto.PessoaResponseDTO;
+import hemocentro.dto.UsuarioRequestDTO;
 import hemocentro.entities.Pessoa;
 import hemocentro.exceptions.ResourceNotFoundException;
 
 import hemocentro.repositories.PessoaRepository;
+import hemocentro.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,8 @@ import java.util.List;
 public class PessoaService {
     @Autowired
     private PessoaRepository pessoaRepository;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @Transactional(readOnly = true)
     public List<PessoaResponseDTO> listar(){
@@ -54,4 +58,6 @@ public class PessoaService {
 
         pessoaRepository.deleteById(id);
     }
+
+
 }

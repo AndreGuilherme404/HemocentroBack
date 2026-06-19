@@ -1,6 +1,8 @@
 package hemocentro.dto;
 
+import hemocentro.TipoPerfil;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,9 +14,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UsuarioRequestDTO {
-    @NotBlank(message = "O cpf é obrigatório.")
-    @Size(min = 11, max = 14, message = "O CPF deve ter entre 11 e 14 caracteres.")
-    String cpf;
+    @NotBlank(message = "O login é obrigatório.")
+    String login;
     @NotBlank(message = "Digite uma senha.")
     String senha;
+    @NotNull(message = "O tipo de perfil é obrigatório.")
+    private TipoPerfil tipoPerfil;
+    @NotNull(message = "O id da pessoa é obrigatório.")
+    private Long pessoaId;
+
 }
