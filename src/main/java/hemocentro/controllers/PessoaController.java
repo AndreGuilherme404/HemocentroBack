@@ -11,9 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
 @RequestMapping("/pessoa")
+@CrossOrigin(origins = "http://localhost:4200")
 public class PessoaController {
     @Autowired
     private PessoaService pessoaService;

@@ -1,5 +1,6 @@
 package hemocentro.entities;
 
+import hemocentro.Situacao;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,5 +22,5 @@ public class ExameColeta {
     private Exame exame;
 
     @Column(nullable = false)
-    private Boolean resultado;
+    private Situacao resultado;
 }

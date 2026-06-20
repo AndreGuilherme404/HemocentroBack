@@ -1,5 +1,6 @@
 package hemocentro.services;
 
+import hemocentro.dto.LoginRequestDTO;
 import hemocentro.dto.PessoaResponseDTO;
 import hemocentro.dto.UsuarioRequestDTO;
 import hemocentro.dto.UsuarioResponseDTO;
@@ -20,7 +21,7 @@ public class LoginService {
     @Autowired
     UsuarioRepository usuarioRepository;
     @Transactional
-    public UsuarioResponseDTO login(UsuarioRequestDTO dto) throws UnauthorizedException {
+    public UsuarioResponseDTO login(LoginRequestDTO dto) throws UnauthorizedException {
         Usuario entity = usuarioRepository.findByLoginAndSenha(dto.getLogin(), dto.getSenha());
         if(entity != null){
             return new UsuarioResponseDTO(entity);

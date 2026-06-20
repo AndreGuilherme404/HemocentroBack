@@ -14,9 +14,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
 @RequestMapping("/exameColeta")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ExameColetaController {
     @Autowired
     private ExameColetaService exameColetaService;
