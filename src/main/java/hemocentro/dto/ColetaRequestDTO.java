@@ -1,20 +1,9 @@
 package hemocentro.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import hemocentro.entities.Hemocentro;
-import hemocentro.entities.Pessoa;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import java.time.LocalDate;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 public class ColetaRequestDTO {
     @JsonFormat(pattern = "dd-MM-yyyy")
     @NotNull(message = "A data da coleta é obrigatória.")
@@ -26,7 +15,50 @@ public class ColetaRequestDTO {
     private Long hemocentroId;
     @NotNull(message = "O id da pessoa é obrigatório.")
     private Long pessoaId;
-    //sem a lista de exames porque os exames sao feitos após a coleta então nao faz sentido pedir eles aqui
+    // sem a lista de exames porque os exames sao feitos após a coleta então nao faz
+    // sentido pedir eles aqui
 
+    public ColetaRequestDTO() {
+
+    }
+
+    public ColetaRequestDTO(LocalDate dataColeta, LocalDate dataValidade, Long hemocentroId, Long pessoaId) {
+        this.dataColeta = dataColeta;
+        this.dataValidade = dataValidade;
+        this.hemocentroId = hemocentroId;
+        this.pessoaId = pessoaId;
+    }
+
+    public LocalDate getDataColeta() {
+        return dataColeta;
+    }
+
+    public void setDataColeta(LocalDate dataColeta) {
+        this.dataColeta = dataColeta;
+    }
+
+    public LocalDate getDataValidade() {
+        return dataValidade;
+    }
+
+    public void setDataValidade(LocalDate dataValidade) {
+        this.dataValidade = dataValidade;
+    }
+
+    public Long getHemocentroId() {
+        return hemocentroId;
+    }
+
+    public void setHemocentroId(Long hemocentroId) {
+        this.hemocentroId = hemocentroId;
+    }
+
+    public Long getPessoaId() {
+        return pessoaId;
+    }
+
+    public void setPessoaId(Long pessoaId) {
+        this.pessoaId = pessoaId;
+    }
 
 }

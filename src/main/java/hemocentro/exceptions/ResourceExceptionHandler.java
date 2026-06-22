@@ -51,7 +51,7 @@ public class ResourceExceptionHandler {
             BusinessException e,
             HttpServletRequest request) {
 
-        HttpStatus status = HttpStatus.UNPROCESSABLE_ENTITY;
+        HttpStatus status = HttpStatus.UNPROCESSABLE_CONTENT;
 
         StandardError err = new StandardError(
                 Instant.now(),

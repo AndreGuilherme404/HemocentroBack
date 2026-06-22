@@ -9,5 +9,4 @@ public class HemocentroApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HemocentroApplication.class, args);
 	}
-
 }

@@ -2,25 +2,52 @@ package hemocentro.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.hibernate.validator.constraints.br.CPF;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 public class PessoaRequestDTO {
     @NotBlank(message = "O nome é obrigatório.")
     @Size(min = 4, message = "O nome deve ter no mínimo 4 caracteres.")
     private String nome;
-    @NotBlank(message = "O cpf é obrigatório.")
-    @Size(min = 11, max = 14, message = "O CPF deve ter entre 11 e 14 caracteres.")
+    @NotBlank(message = "O CPF é obrigatório.")
+    @CPF(message = "CPF inválido.")
     private String cpf;
     @NotBlank(message = "O email é obrigatório.")
     @Email
     private String email;
+
+    public PessoaRequestDTO() {
+
+    }
+
+    public PessoaRequestDTO(String nome, String cpf, String email) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }
