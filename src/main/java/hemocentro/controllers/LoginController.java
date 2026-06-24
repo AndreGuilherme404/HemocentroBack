@@ -1,11 +1,10 @@
 package hemocentro.controllers;
 
-import hemocentro.dto.UsuarioRequestDTO;
+import hemocentro.dto.LoginRequestDTO;
 import hemocentro.dto.UsuarioResponseDTO;
 import hemocentro.exceptions.UnauthorizedException;
 import hemocentro.services.LoginService;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,9 +19,12 @@ public class LoginController {
     }
 
     @PostMapping
-    public ResponseEntity<UsuarioResponseDTO> login(@Valid @RequestBody UsuarioRequestDTO dto)
+    public ResponseEntity<UsuarioResponseDTO> login(
+            @Valid @RequestBody LoginRequestDTO dto)
             throws UnauthorizedException {
+
         UsuarioResponseDTO response = loginService.login(dto);
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+
+        return ResponseEntity.ok(response);
     }
 }
