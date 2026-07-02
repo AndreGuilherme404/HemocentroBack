@@ -11,6 +11,7 @@ import hemocentro.dto.ColetaResponseDTO;
 import hemocentro.entities.Coleta;
 import hemocentro.entities.Hemocentro;
 import hemocentro.entities.Pessoa;
+import hemocentro.enumerados.TipoSanguineo;
 import hemocentro.exceptions.ResourceNotFoundException;
 import hemocentro.repositories.ColetaRepository;
 import hemocentro.repositories.HemocentroRepository;
@@ -72,10 +73,11 @@ public class ColetaService {
 
         Pessoa pessoa = pessoaRepository.findById(dto.getPessoaId())
                 .orElseThrow(() -> new ResourceNotFoundException("Pessoa não encontrada. Id: " + dto.getPessoaId()));
-
+            
         entity.setDataColeta(dto.getDataColeta());
         entity.setDataValidade(dto.getDataValidade());
         entity.setHemocentro(hemocentro);
         entity.setPessoaDoadora(pessoa);
+        entity.setTipoSanguineo(TipoSanguineo.fromString(dto.getTipoSanguineo()));
     }
 }

@@ -21,13 +21,14 @@ public enum TipoSanguineo {
     }
 
     public static TipoSanguineo fromString(String texto) {
-        if (texto != null) {
-            for (TipoSanguineo tipo : TipoSanguineo.values()) {
-                if (texto.equalsIgnoreCase(tipo.label))
-                    return tipo;
+    if (texto != null) {
+        for (TipoSanguineo tipo : TipoSanguineo.values()) {
+            if (texto.equalsIgnoreCase(tipo.label) || texto.equalsIgnoreCase(tipo.name())) {
+                return tipo;
             }
         }
-        return null;
     }
+    return null;
+}
 
 }

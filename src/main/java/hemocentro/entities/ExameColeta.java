@@ -63,7 +63,4 @@ public class ExameColeta {
     public void setColeta(Coleta coleta) {
         this.coleta = coleta;
     }
-
-    
-
 }

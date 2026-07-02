@@ -16,6 +16,7 @@ public class ColetaResponseDTO {
     private LocalDate dataValidade;
     private Long hemocentroId;
     private Long pessoaId;
+    private String tipoSanguineo;
     // pensando no front-end, quando for pedir pra ver uma coleta eu tambem mostro
     // os dados
     // dos exames feitos e os dados sobre eles
@@ -26,6 +27,7 @@ public class ColetaResponseDTO {
         this.dataValidade = entity.getDataValidade();
         this.hemocentroId = entity.getHemocentro().getId();
         this.pessoaId = entity.getPessoaDoadora().getId();
+        this.tipoSanguineo = entity.getTipoSanguineo().toString();
     }
 
     public Long getId() {
@@ -48,4 +50,7 @@ public class ColetaResponseDTO {
         return pessoaId;
     }
 
+    public String getTipoSanguineo() {
+        return tipoSanguineo;
+    }
 }

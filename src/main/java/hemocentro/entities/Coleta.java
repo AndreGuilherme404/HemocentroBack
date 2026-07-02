@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+import hemocentro.enumerados.TipoSanguineo;
+
 @Entity
 @Table(name = "tb_coleta")
 public class Coleta {
@@ -16,6 +18,10 @@ public class Coleta {
 
     @Column(nullable = false)
     private LocalDate dataValidade;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_sanguineo")
+    private TipoSanguineo tipoSanguineo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hemocentro_id")
@@ -75,4 +81,14 @@ public class Coleta {
     public void setPessoaDoadora(Pessoa pessoaDoadora) {
         this.pessoaDoadora = pessoaDoadora;
     }
+
+    public TipoSanguineo getTipoSanguineo() {
+        return tipoSanguineo;
+    }
+
+    public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
+        this.tipoSanguineo = tipoSanguineo;
+    }
+
+    
 }

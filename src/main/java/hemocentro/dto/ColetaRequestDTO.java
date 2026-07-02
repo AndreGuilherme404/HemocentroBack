@@ -1,6 +1,8 @@
 package hemocentro.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
@@ -15,18 +17,20 @@ public class ColetaRequestDTO {
     private Long hemocentroId;
     @NotNull(message = "O id da pessoa é obrigatório.")
     private Long pessoaId;
-    // sem a lista de exames porque os exames sao feitos após a coleta então nao faz
-    // sentido pedir eles aqui
+    @NotBlank(message = "O tipo sanguíneo é obrigatório.")
+    private String tipoSanguineo;
 
     public ColetaRequestDTO() {
 
     }
 
-    public ColetaRequestDTO(LocalDate dataColeta, LocalDate dataValidade, Long hemocentroId, Long pessoaId) {
+    public ColetaRequestDTO(LocalDate dataColeta, LocalDate dataValidade, Long hemocentroId, Long pessoaId,
+            String tipoSanguineo) {
         this.dataColeta = dataColeta;
         this.dataValidade = dataValidade;
         this.hemocentroId = hemocentroId;
         this.pessoaId = pessoaId;
+        this.tipoSanguineo = tipoSanguineo;
     }
 
     public LocalDate getDataColeta() {
@@ -59,6 +63,14 @@ public class ColetaRequestDTO {
 
     public void setPessoaId(Long pessoaId) {
         this.pessoaId = pessoaId;
+    }
+
+    public String getTipoSanguineo() {
+        return tipoSanguineo;
+    }
+
+    public void setTipoSanguineo(String tipoSanguineo) {
+        this.tipoSanguineo = tipoSanguineo;
     }
 
 }
