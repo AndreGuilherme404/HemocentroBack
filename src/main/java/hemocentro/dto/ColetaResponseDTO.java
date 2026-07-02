@@ -1,20 +1,13 @@
 package hemocentro.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import hemocentro.entities.Hemocentro;
-import hemocentro.entities.Pessoa;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import hemocentro.entities.Coleta;
 
 import java.time.LocalDate;
-import java.util.List;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
+@JsonPropertyOrder({ "id", "dataColeta", "dataValidade", "hemocentroId", "pessoaId", "exames" })
 public class ColetaResponseDTO {
     private Long id;
     @JsonFormat(pattern = "dd-MM-yyyy")
@@ -23,7 +16,41 @@ public class ColetaResponseDTO {
     private LocalDate dataValidade;
     private Long hemocentroId;
     private Long pessoaId;
-    private List<ExameResponseDTO> exames;
-    //pensando no front-end, quando for pedir pra ver uma coleta eu tambem mostro os dados
-    //dos exames feitos e os dados sobre eles
+    private String tipoSanguineo;
+    // pensando no front-end, quando for pedir pra ver uma coleta eu tambem mostro
+    // os dados
+    // dos exames feitos e os dados sobre eles
+
+    public ColetaResponseDTO(Coleta entity) {
+        this.id = entity.getId();
+        this.dataColeta = entity.getDataColeta();
+        this.dataValidade = entity.getDataValidade();
+        this.hemocentroId = entity.getHemocentro().getId();
+        this.pessoaId = entity.getPessoaDoadora().getId();
+        this.tipoSanguineo = entity.getTipoSanguineo().toString();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public LocalDate getDataColeta() {
+        return dataColeta;
+    }
+
+    public LocalDate getDataValidade() {
+        return dataValidade;
+    }
+
+    public Long getHemocentroId() {
+        return hemocentroId;
+    }
+
+    public Long getPessoaId() {
+        return pessoaId;
+    }
+
+    public String getTipoSanguineo() {
+        return tipoSanguineo;
+    }
 }

@@ -1,16 +1,31 @@
 package hemocentro.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
+import hemocentro.entities.Exame;
+
+@JsonPropertyOrder({ "id", "nome", "descricao" })
 public class ExameResponseDTO {
     private Long id;
     private String nome;
     private String descricao;
+
+    public ExameResponseDTO(Exame entity) {
+        this.id = entity.getId();
+        this.nome = entity.getNome();
+        this.descricao = entity.getDescricao();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
 }

@@ -1,0 +1,799 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Hemocentro API
+meta:
+  id: wrk_da1959cd6446401e81cd84417d7ef08b
+  created: 1782098926024
+  modified: 1782098926024
+  description: ""
+
+collection:
+  - name: Login
+    meta:
+      id: fld_df19ff2a2ff046ec8b55ecc7a470d32e
+      created: 1782098926028
+      modified: 1782098926028
+      sortKey: -1600000000
+      description: ""
+    children:
+      - url: http://localhost:8080/auth/login
+        name: Login
+        meta:
+          id: req_2db94bedb5e349bd96927deac5758e6c
+          created: 1782098926039
+          modified: 1782098926039
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926039
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "login": "admin",
+              "senha": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Pessoa
+    meta:
+      id: fld_7752271577664eecaf20b4a39028687f
+      created: 1782098926029
+      modified: 1782098926029
+      sortKey: -1500000000
+      description: ""
+    children:
+      - url: http://localhost:8080/pessoa
+        name: Listar Pessoas
+        meta:
+          id: req_267c912b5e6a4564a358361df16b7ec1
+          created: 1782098926042
+          modified: 1782098926042
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926042
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/pessoa/1
+        name: Buscar Pessoa
+        meta:
+          id: req_5d097cc83f7f4a86841422c4d5f8782b
+          created: 1782098926044
+          modified: 1782098926044
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926044
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/pessoa
+        name: Criar Pessoa
+        meta:
+          id: req_8fd56b3fbf5446a8bbb825aea7f25eb6
+          created: 1782098926046
+          modified: 1782098926046
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926046
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "João da Silva",
+              "cpf": "12345678909",
+              "email": "joao@email.com"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/pessoa/1
+        name: Alterar Pessoa
+        meta:
+          id: req_8020465ca4d745248af026895cb682e3
+          created: 1782098926047
+          modified: 1782098926047
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926047
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "João Atualizado",
+              "cpf": "12345678909",
+              "email": "novo@email.com"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/pessoa/1
+        name: Excluir Pessoa
+        meta:
+          id: req_652d6136b8c94c23a27dc626641d2959
+          created: 1782098926049
+          modified: 1782098926049
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926049
+        method: DELETE
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/pessoa/1/usuarios
+        name: Listar Usuários relacionados a uma Pessoa
+        meta:
+          id: req_c06b4e59e77447d8a29a7eed7aa57297
+          created: 1782103597307
+          modified: 1782103625635
+          isPrivate: false
+          description: ""
+          sortKey: -1782098925942
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Hemocentro
+    meta:
+      id: fld_03e156ea702f4f8bbea902cf927e2499
+      created: 1782098926031
+      modified: 1782098926031
+      sortKey: -1400000000
+      description: ""
+    children:
+      - url: http://localhost:8080/hemocentro
+        name: Listar Hemocentros
+        meta:
+          id: req_ab2c557f75384d788798422901f6080e
+          created: 1782098926050
+          modified: 1782101012132
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926050
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/hemocentro/1
+        name: Buscar Hemocentro
+        meta:
+          id: req_e95124e55635492d815685d9f5b430d1
+          created: 1782098926052
+          modified: 1782101009560
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926052
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/hemocentro/1/usuarios
+        name: Listar Usuarios do Hemocentro
+        meta:
+          id: req_7c609e9d36d6446ab18541ee17acc06a
+          created: 1782098926054
+          modified: 1782102232496
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926054
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/hemocentro
+        name: Criar Hemocentro
+        meta:
+          id: req_19b25d38e73a4609829830459b3b59de
+          created: 1782098926056
+          modified: 1782098926056
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926056
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Hemocentro Central",
+              "descricao": "Hemocentro principal"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/hemocentro/1
+        name: Alterar Hemocentro
+        meta:
+          id: req_60697eef21a04e3697c41bbac7b694a9
+          created: 1782098926058
+          modified: 1782100993002
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926058
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Hemocentro Atualizado",
+              "descricao": "Descrição atualizada"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/hemocentro/1
+        name: Excluir Hemocentro
+        meta:
+          id: req_dd6778e8508e4480ab66450096325faf
+          created: 1782098926059
+          modified: 1782098926059
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926059
+        method: DELETE
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Exame
+    meta:
+      id: fld_3e4f031dc1dd4ef5bbfc6ce7c37d5ed9
+      created: 1782098926033
+      modified: 1782098926033
+      sortKey: -1300000000
+      description: ""
+    children:
+      - url: http://localhost:8080/exame
+        name: Listar Exames
+        meta:
+          id: req_a172a2d3b07d425eab00d0859fb20366
+          created: 1782098926061
+          modified: 1782098926061
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926061
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/exame/1
+        name: Buscar Exame
+        meta:
+          id: req_6ca08a748e52433b91683d08c50d9fbb
+          created: 1782098926063
+          modified: 1782101045087
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926063
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/exame
+        name: Criar Exame
+        meta:
+          id: req_62ed1a81384e4e579cf508a1daf0a6ec
+          created: 1782098926065
+          modified: 1782102551124
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926065
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "HIV",
+              "descricao": "Teste para HIV"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/exame/1
+        name: Alterar Exame
+        meta:
+          id: req_f374e95c32f6461f8a44a3edb1af61db
+          created: 1782098926066
+          modified: 1782101037992
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926066
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "HIV Atualizado",
+              "descricao": "Nova descrição"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/exame/1
+        name: Excluir Exame
+        meta:
+          id: req_d253c4450d6544bfb00234a772ea7853
+          created: 1782098926068
+          modified: 1782098926068
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926068
+        method: DELETE
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Coleta
+    meta:
+      id: fld_ca0aa0e3ea4e4c278fc66d86a80b2659
+      created: 1782098926035
+      modified: 1782098926035
+      sortKey: -1200000000
+      description: ""
+    children:
+      - url: http://localhost:8080/coleta
+        name: Listar Coletas
+        meta:
+          id: req_d4ed06b382d44c40974abdc49217bd8a
+          created: 1782098926069
+          modified: 1782098926069
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926069
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/coleta/1
+        name: Buscar Coleta
+        meta:
+          id: req_15d0a364c9df4c0ea421a139e0bc7c86
+          created: 1782098926071
+          modified: 1782098926071
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926071
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/coleta
+        name: Criar Coleta
+        meta:
+          id: req_c733e19c2c604a8797b530faec8feaac
+          created: 1782098926073
+          modified: 1782101380466
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926073
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "dataColeta": "22-06-2026",
+              "dataValidade": "22-08-2026",
+              "hemocentroId": 1,
+              "pessoaId": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/coleta/1
+        name: Alterar Coleta
+        meta:
+          id: req_591ded8211ea4b8a991ba2e94d653f48
+          created: 1782098926074
+          modified: 1782098926074
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926074
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "dataColeta": "22-06-2026",
+              "dataValidade": "22-09-2026",
+              "hemocentroId": 1,
+              "pessoaId": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/coleta/1
+        name: Excluir Coleta
+        meta:
+          id: req_e3eb0d97369f44febf1d843657f9f848
+          created: 1782098926076
+          modified: 1782098926076
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926076
+        method: DELETE
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Usuário
+    meta:
+      id: fld_5b417039d87d4a4bb68380e7ed2f8858
+      created: 1782098926036
+      modified: 1782098926036
+      sortKey: -1100000000
+      description: ""
+    children:
+      - url: http://localhost:8080/usuario
+        name: Listar Usuarios
+        meta:
+          id: req_8369e3484e9d4e458e817016bdf6652c
+          created: 1782098926077
+          modified: 1782098926077
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926077
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/usuario/1
+        name: Buscar Usuario
+        meta:
+          id: req_b75e295f510b4376ba9f6d1df98504b7
+          created: 1782098926079
+          modified: 1782098926079
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926079
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/usuario
+        name: Criar Usuario
+        meta:
+          id: req_20f60724238d4b93bb13006189c55bb4
+          created: 1782098926081
+          modified: 1782103707974
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926081
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "login": "admin",
+              "senha": "123456",
+              "tipoPerfil": "GERENTE",
+              "pessoaId": 1,
+              "hemocentroId": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/usuario/1
+        name: Alterar Usuario
+        meta:
+          id: req_ab756e48a6884155905f77e947bcee2c
+          created: 1782098926083
+          modified: 1782101430271
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926083
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "login": "admin2",
+              "senha": "123456",
+              "tipoPerfil": "USUARIO",
+              "pessoaId": 1,
+              "hemocentroId": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/usuario/1
+        name: Excluir Usuario
+        meta:
+          id: req_7800dedfcf6a4128ab565d8dd4f93216
+          created: 1782098926085
+          modified: 1782098926085
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926085
+        method: DELETE
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Exame Coleta
+    meta:
+      id: fld_675733b257b1449d814f3157bf0ab877
+      created: 1782098926037
+      modified: 1782098926037
+      sortKey: -1000000000
+      description: ""
+    children:
+      - url: http://localhost:8080/exameColeta?coletaId=1
+        name: Listar Exames da Coleta
+        meta:
+          id: req_e46f33ff9191432da0339f5a2dc0e922
+          created: 1782098926087
+          modified: 1782102485359
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926087
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/exameColeta
+        name: Criar ExameColeta
+        meta:
+          id: req_9e736689a07e4b4a877ac56d41c31680
+          created: 1782098926088
+          modified: 1782102562567
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926088
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "coletaId": 1,
+              "exameId": 1,
+              "situacao": "POSITIVO"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/exameColeta/1
+        name: Alterar ExameColeta
+        meta:
+          id: req_c62ae37a158043b4b904ac579b2bd63e
+          created: 1782098926090
+          modified: 1782098926090
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926090
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "coletaId": 1,
+              "exameId": 1,
+              "situacao": "REPROVADO"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/exameColeta/1
+        name: Excluir ExameColeta
+        meta:
+          id: req_891d28edc4804c6aa87659e93936d008
+          created: 1782098926091
+          modified: 1782098926091
+          isPrivate: false
+          description: ""
+          sortKey: -1782098926091
+        method: DELETE
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_b06b20bc9842e07427278622725c27ff89bb4ccf
+    created: 1782098926230
+    modified: 1782098926230
+environments:
+  name: Base Environment
+  meta:
+    id: env_b06b20bc9842e07427278622725c27ff89bb4ccf
+    created: 1782098926093
+    modified: 1782098926093
+    isPrivate: false

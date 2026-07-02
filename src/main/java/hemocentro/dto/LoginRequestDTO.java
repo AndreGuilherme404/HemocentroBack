@@ -1,18 +1,36 @@
 package hemocentro.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 public class LoginRequestDTO {
+
     @NotBlank(message = "O login é obrigatório.")
-    String login;
+    private String login;
+
     @NotBlank(message = "Digite uma senha.")
-    String senha;
+    private String senha;
+
+    public LoginRequestDTO() {
+    }
+
+    public LoginRequestDTO(String login, String senha) {
+        this.login = login;
+        this.senha = senha;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }

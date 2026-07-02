@@ -1,25 +1,44 @@
 package hemocentro.dto;
 
-import hemocentro.TipoPerfil;
-import hemocentro.entities.Pessoa;
-import hemocentro.entities.Usuario;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import hemocentro.enumerados.TipoPerfil;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import hemocentro.entities.Usuario;
+
+@JsonPropertyOrder({ "id", "login", "tipoPerfil", "pessoaId", "hemocentroId" })
 public class UsuarioResponseDTO {
-    Long id;
-    String nome;
-    TipoPerfil tipoPerfil;
-    public UsuarioResponseDTO(Usuario entity){
+    private Long id;
+    private String login;
+    private TipoPerfil tipoPerfil;
+    private Long pessoaId;
+    private Long hemocentroId;
+
+    public UsuarioResponseDTO(Usuario entity) {
         this.id = entity.getId();
-        this.nome = entity.getLogin();
+        this.login = entity.getLogin();
         this.tipoPerfil = entity.getTipoPerfil();
+        this.pessoaId = entity.getPessoa().getId();
+        this.hemocentroId = entity.getHemocentro().getId();
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public TipoPerfil getTipoPerfil() {
+        return tipoPerfil;
+    }
+
+    public Long getPessoaId() {
+        return pessoaId;
+    }
+
+    public Long getHemocentroId() {
+        return hemocentroId;
+    }
 }

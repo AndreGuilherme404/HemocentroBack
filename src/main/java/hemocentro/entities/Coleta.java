@@ -1,18 +1,11 @@
 package hemocentro.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.List;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
+import hemocentro.enumerados.TipoSanguineo;
+
 @Entity
 @Table(name = "tb_coleta")
 public class Coleta {
@@ -26,6 +19,10 @@ public class Coleta {
     @Column(nullable = false)
     private LocalDate dataValidade;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_sanguineo")
+    private TipoSanguineo tipoSanguineo;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hemocentro_id")
     private Hemocentro hemocentro;
@@ -34,12 +31,64 @@ public class Coleta {
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoaDoadora;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "tb_coleta_exame",
-            joinColumns = @JoinColumn(name = "coleta_id"),
-            inverseJoinColumns = @JoinColumn(name = "exame_id")
-    )
-    private List<ExameColeta> examesColeta;
+    public Coleta() {
+    }
 
+    public Coleta(Long id, LocalDate dataColeta, LocalDate dataValidade, Hemocentro hemocentro, Pessoa pessoaDoadora) {
+        this.id = id;
+        this.dataColeta = dataColeta;
+        this.dataValidade = dataValidade;
+        this.hemocentro = hemocentro;
+        this.pessoaDoadora = pessoaDoadora;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDate getDataColeta() {
+        return dataColeta;
+    }
+
+    public void setDataColeta(LocalDate dataColeta) {
+        this.dataColeta = dataColeta;
+    }
+
+    public LocalDate getDataValidade() {
+        return dataValidade;
+    }
+
+    public void setDataValidade(LocalDate dataValidade) {
+        this.dataValidade = dataValidade;
+    }
+
+    public Hemocentro getHemocentro() {
+        return hemocentro;
+    }
+
+    public void setHemocentro(Hemocentro hemocentro) {
+        this.hemocentro = hemocentro;
+    }
+
+    public Pessoa getPessoaDoadora() {
+        return pessoaDoadora;
+    }
+
+    public void setPessoaDoadora(Pessoa pessoaDoadora) {
+        this.pessoaDoadora = pessoaDoadora;
+    }
+
+    public TipoSanguineo getTipoSanguineo() {
+        return tipoSanguineo;
+    }
+
+    public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
+        this.tipoSanguineo = tipoSanguineo;
+    }
+
+    
 }

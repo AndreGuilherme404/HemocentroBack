@@ -1,4 +1,4 @@
-package hemocentro;
+package hemocentro.enumerados;
 
 public enum TipoPerfil {
     USUARIO,

@@ -1,77 +1,54 @@
--- ==========================================
--- 1. INSERINDO HEMOCENTROS (tb_hemocentro)
--- Apenas ID e descricao, conforme sua classe.
--- ==========================================
-INSERT INTO tb_hemocentro (id, descricao) VALUES (1, 'Hemocentro Central de Belo Horizonte');
-INSERT INTO tb_hemocentro (id, descricao) VALUES (2, 'Posto de Coleta Universitário');
-INSERT INTO tb_hemocentro (id, descricao) VALUES (3, 'Hemocentro Regional Contagem');
-INSERT INTO tb_hemocentro (id, descricao) VALUES (4, 'Unidade Móvel de Coleta - Praça da Liberdade');
-INSERT INTO tb_hemocentro (id, descricao) VALUES (5, 'Posto Avançado Pampulha');
+-- =================================================================================
+-- 1. POPULANDO A TABELA DE HEMOCENTROS (tb_hemocentro)
+-- =================================================================================
+INSERT INTO tb_hemocentro (id, nome, descricao) VALUES (1, 'Hemocentro Central', 'Unidade principal de captação de doadores da capital.');
+INSERT INTO tb_hemocentro (id, nome, descricao) VALUES (2, 'Hemocentro Regional Sul', 'Unidade de triagem e armazenamento da zona sul.');
 
--- ==========================================
--- 2. INSERINDO PESSOAS (tb_pessoa)
--- ==========================================
+-- =================================================================================
+-- 2. POPULANDO A TABELA DE PESSOAS (tb_pessoa)
+-- =================================================================================
+INSERT INTO tb_pessoa (id, nome, cpf, email) VALUES (1, 'Carlos Silva', '111.222.333-44', 'carlos.silva@email.com');
+INSERT INTO tb_pessoa (id, nome, cpf, email) VALUES (2, 'Ana Costa', '555.666.777-88', 'ana.costa@email.com');
+INSERT INTO tb_pessoa (id, nome, cpf, email) VALUES (3, 'Mariana Souza', '999.888.777-66', 'mariana.souza@email.com');
 
-INSERT INTO tb_pessoa (id, nome, cpf, email) VALUES(1, 'André Guilherme', '111.111.111-11', 'andre@email.com');
-INSERT INTO tb_pessoa (id, nome, cpf, email) VALUES(2, 'Maria Silva', '222.222.222-22', 'maria@email.com');
-INSERT INTO tb_pessoa (id, nome, cpf, email) VALUES(3, 'João Souza', '333.333.333-33', 'joao@email.com');
-INSERT INTO tb_pessoa (id, nome, cpf, email) VALUES(4, 'Ana Oliveira', '444.444.444-44', 'ana@email.com');
-INSERT INTO tb_pessoa (id, nome, cpf, email) VALUES(5, 'Carlos Eduardo', '555.555.555-55', 'carlos@email.com');
+-- =================================================================================
+-- 3. POPULANDO A TABELA DE USUÁRIOS (tb_usuario)
+-- Depende de: tb_pessoa e tb_hemocentro
+-- Enums válidos: 'USUARIO', 'FUNCIONARIO', 'GERENTE'
+-- =================================================================================
+INSERT INTO tb_usuario (id, login, senha, tipo_perfil, pessoa_id, hemocentro_id) VALUES (1, 'carlos_gerente', '123', 'GERENTE', 1, 1);
+INSERT INTO tb_usuario (id, login, senha, tipo_perfil, pessoa_id, hemocentro_id) VALUES (2, 'ana_funcionario', '123', 'FUNCIONARIO', 2, 1);
+INSERT INTO tb_usuario (id, login, senha, tipo_perfil, pessoa_id, hemocentro_id) VALUES (3, 'mariana_usuario', '123', 'USUARIO', 3, 2);
 
--- ==========================================
--- 3. INSERINDO USUARIOS (tb_usuario)
--- tipo_perfil: 0 (USUARIO), 1 (FUNCIONARIO), 2 (GERENTE)
--- Assumindo o enum padrão numérico do JPA.
--- ==========================================
+-- =================================================================================
+-- 4. POPULANDO A TABELA DE EXAMES BASE (tb_exame)
+-- =================================================================================
+INSERT INTO tb_exame (id, nome, descricao) VALUES (1, 'Sorologia Sífilis', 'Teste de triagem sorológica (como VDRL) para detecção de anticorpos contra o Treponema pallidum.');
+INSERT INTO tb_exame (id, nome, descricao) VALUES (2, 'Sorologia HIV', 'Triagem de anticorpos contra os vírus HIV 1 e 2.');
+INSERT INTO tb_exame (id, nome, descricao) VALUES (3, 'Sorologia Hepatite B', 'Detecção do antígeno HBsAg para Hepatite B.');
 
-INSERT INTO tb_usuario (id, login, senha, tipo_perfil, pessoa_id) VALUES(1, 'gerente', 'gerente', 2, 1);
-INSERT INTO tb_usuario (id, login, senha, tipo_perfil, pessoa_id) VALUES(2, 'funcionario', 'funcionario', 1, 2);
-INSERT INTO tb_usuario (id, login, senha, tipo_perfil, pessoa_id) VALUES(3, 'usuario', 'usuario', 0, 3);
-INSERT INTO tb_usuario (id, login, senha, tipo_perfil, pessoa_id) VALUES(4, 'ana.doadora', 'senha123', 0, 4);
-INSERT INTO tb_usuario (id, login, senha, tipo_perfil, pessoa_id) VALUES(5, 'carlos.doador', 'senha123', 0, 5);
+-- =================================================================================
+-- 5. POPULANDO A TABELA DE COLETAS (tb_coleta)
+-- Depende de: tb_hemocentro e tb_pessoa
+-- Enums válidos: 'A_POSITIVO', 'A_NEGATIVO', 'B_POSITIVO', 'B_NEGATIVO', etc.
+-- =================================================================================
+INSERT INTO tb_coleta (id, data_coleta, data_validade, tipo_sanguineo, hemocentro_id, pessoa_id) VALUES (1, '2026-06-01', '2026-07-15', 'O_POSITIVO', 1, 1);
+INSERT INTO tb_coleta (id, data_coleta, data_validade, tipo_sanguineo, hemocentro_id, pessoa_id) VALUES (2, '2026-06-15', '2026-07-30', 'A_NEGATIVO', 1, 2);
+INSERT INTO tb_coleta (id, data_coleta, data_validade, tipo_sanguineo, hemocentro_id, pessoa_id) VALUES (3, '2026-06-28', '2026-08-12', 'AB_POSITIVO', 2, 3);
 
--- ==========================================
--- 4. INSERINDO EXAMES (tb_exame)
--- Bateria de exames obrigatórios.
--- ==========================================
+-- =================================================================================
+-- 6. POPULANDO OS EXAMES REALIZADOS NAS COLETAS (tb_exame_coleta)
+-- Depende de: tb_coleta e tb_exame
+-- Enums válidos para situacao: 'POSITIVO', 'NEGATIVO', 'PENDENTE'
+-- =================================================================================
+-- Exames da Coleta 1 (Carlos Silva)
+INSERT INTO tb_exame_coleta (id, coleta_id, exame_id, situacao) VALUES (1, 1, 1, 'NEGATIVO');
+INSERT INTO tb_exame_coleta (id, coleta_id, exame_id, situacao) VALUES (2, 1, 2, 'NEGATIVO');
 
-INSERT INTO tb_exame (id, nome, descricao) VALUES(1, 'NAT - HIV', 'Teste de Ácido Nucleico para detecção do vírus HIV.');
-INSERT INTO tb_exame (id, nome, descricao) VALUES(2, 'NAT - HBV / HCV', 'Teste de Ácido Nucleico para detecção de Hepatite B e C.');
-INSERT INTO tb_exame (id, nome, descricao) VALUES(3, 'Anti-HCV', 'Pesquisa de anticorpos contra o vírus da Hepatite C.');
-INSERT INTO tb_exame (id, nome, descricao) VALUES(4, 'VDRL', 'Teste sorológico para detecção de anticorpos para Sífilis.');
-INSERT INTO tb_exame (id, nome, descricao) VALUES(5, 'Doença de Chagas', 'Pesquisa de anticorpos contra o protozoário Trypanosoma cruzi.');
-INSERT INTO tb_exame (id, nome, descricao) VALUES(6, 'Anti-HTLV I/II', 'Pesquisa de anticorpos contra os vírus linfotrópicos humanos.');
-INSERT INTO tb_exame (id, nome, descricao) VALUES(7, 'Tipagem ABO', 'Identificação do grupo sanguíneo do doador.');
-INSERT INTO tb_exame (id, nome, descricao) VALUES(8, 'Fator RhD', 'Identificação do fator Rhesus (Positivo ou Negativo).');
+-- Exames da Coleta 2 (Ana Costa)
+INSERT INTO tb_exame_coleta (id, coleta_id, exame_id, situacao) VALUES (3, 2, 1, 'POSITIVO');
+INSERT INTO tb_exame_coleta (id, coleta_id, exame_id, situacao) VALUES (4, 2, 3, 'NEGATIVO');
 
--- ==========================================
--- 5. INSERINDO EXAMES DA COLETA (tb_exame_coleta)
--- O resultado é Boolean (false = não reagente/normal, true = reagente/alterado)
--- ==========================================
-
-INSERT INTO tb_exame_coleta (id, resultado, exame_id) VALUES(1, 0, 1);
-INSERT INTO tb_exame_coleta (id, resultado, exame_id) VALUES(2, 0, 2);
-INSERT INTO tb_exame_coleta (id, resultado, exame_id) VALUES(3, 1, 3);
-INSERT INTO tb_exame_coleta (id, resultado, exame_id) VALUES(4, 1, 4);
-INSERT INTO tb_exame_coleta (id, resultado, exame_id) VALUES(5, 2, 5); -- Exemplo de um exame que deu alteração
-
--- ==========================================
--- 6. INSERINDO COLETAS (tb_coleta)
--- ==========================================
-
-INSERT INTO tb_coleta (id, data_coleta, data_validade, hemocentro_id, pessoa_id) VALUES(1, '2026-06-01', '2026-07-06', 1, 1);
-INSERT INTO tb_coleta (id, data_coleta, data_validade, hemocentro_id, pessoa_id) VALUES(2, '2026-06-05', '2026-07-10', 2, 4);
-INSERT INTO tb_coleta (id, data_coleta, data_validade, hemocentro_id, pessoa_id) VALUES(3, '2026-06-10', '2026-07-15', 3, 5);
-INSERT INTO tb_coleta (id, data_coleta, data_validade, hemocentro_id, pessoa_id) VALUES(4, '2026-06-12', '2026-07-17', 1, 1);
-INSERT INTO tb_coleta (id, data_coleta, data_validade, hemocentro_id, pessoa_id) VALUES(5, '2026-06-15', '2026-07-20', 4, 4);
-
--- ==========================================
--- 7. ASSOCIANDO COLETAS E EXAMES_COLETA (tb_coleta_exame)
--- Tabela gerada pelo @ManyToMany e @JoinTable
--- ==========================================
-
-INSERT INTO tb_coleta_exame (coleta_id, exame_id) VALUES(1, 1);
-INSERT INTO tb_coleta_exame (coleta_id, exame_id) VALUES(1, 2);
-INSERT INTO tb_coleta_exame (coleta_id, exame_id) VALUES(2, 3);
-INSERT INTO tb_coleta_exame (coleta_id, exame_id) VALUES(3, 4);
-INSERT INTO tb_coleta_exame (coleta_id, exame_id) VALUES(4, 5);
+-- Exames da Coleta 3 (Mariana Souza - Ainda em processamento)
+INSERT INTO tb_exame_coleta (id, coleta_id, exame_id, situacao) VALUES (5, 3, 1, 'PENDENTE');
+INSERT INTO tb_exame_coleta (id, coleta_id, exame_id, situacao) VALUES (6, 3, 2, 'PENDENTE');

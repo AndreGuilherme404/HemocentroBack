@@ -1,55 +1,57 @@
 package hemocentro.controllers;
 
-
-
-
 import hemocentro.dto.ColetaRequestDTO;
 import hemocentro.dto.ColetaResponseDTO;
 
-
-import hemocentro.dto.ExameColetaResponseDTO;
 import hemocentro.services.ColetaService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/coleta")
-@CrossOrigin(origins = "http://localhost:4200")
 public class ColetaController {
-    @Autowired
-    private ColetaService coletaService;
-    //listar
+    private final ColetaService coletaService;
+
+    public ColetaController(ColetaService coletaService) {
+        this.coletaService = coletaService;
+    }
+
+    // listar
     @GetMapping
-    public ResponseEntity<List<ColetaResponseDTO>> listar(){
+    public ResponseEntity<List<ColetaResponseDTO>> listar() {
         List<ColetaResponseDTO> list = coletaService.listar();
         return ResponseEntity.status(HttpStatus.OK).body(list);
     }
-    //buscar por id
+
+    // buscar por id
     @GetMapping("/{id}")
-    public ResponseEntity<ColetaResponseDTO> buscar(@PathVariable Long id){
+    public ResponseEntity<ColetaResponseDTO> buscar(@PathVariable Long id) {
         ColetaResponseDTO dto = coletaService.buscar(id);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    //create
+
+    // create
     @PostMapping
-    public ResponseEntity<ColetaResponseDTO> criar(@Valid @RequestBody ColetaRequestDTO dto){
+    public ResponseEntity<ColetaResponseDTO> criar(@Valid @RequestBody ColetaRequestDTO dto) {
         ColetaResponseDTO novo = coletaService.inserir(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(novo);
     }
-    //update
+
+    // update
     @PutMapping("/{id}")
-    public ResponseEntity<ColetaResponseDTO> alterar(@PathVariable Long id,@Valid @RequestBody ColetaRequestDTO dto){
+    public ResponseEntity<ColetaResponseDTO> alterar(@PathVariable Long id, @Valid @RequestBody ColetaRequestDTO dto) {
         ColetaResponseDTO novo = coletaService.alterar(id, dto);
         return ResponseEntity.status(HttpStatus.OK).body(novo);
     }
-    //delete
+
+    // delete
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         coletaService.excluir(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
